@@ -1,0 +1,5 @@
+Flask
+ReportLab
+qrcode
+python-barcode
+requests
