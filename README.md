@@ -36,7 +36,7 @@ The application then generates a PDF document containing the submitted data alon
 - Timestamp, Lot, Department, Barcode, Qr Code, 	***(set to hidden)***
 - Size, Species, L x W x H, MC ID, Date, Trolley#, Status 	***(Mandatory)***
 - Start Time, Paused Time, Resume Time, Stop Time 	***(set to read-only)***
-![image](https://github.com/ProdITdept/Kanban/assets/168414219/c3c2c9c9-1966-4af4-93f4-bf2551dd3c07)
+![330292670-c3c2c9c9-1966-4af4-93f4-bf2551dd3c07](https://github.com/ELITEJ0E/Kanban/assets/155508356/2112930c-c9bf-4c24-83d1-4618abc48b23)
 
 
 ## 3. Configure Naming Series
@@ -89,8 +89,8 @@ By following these steps, you have successfully set up the FJ Kanban doctype in 
 **5. Update the Python Script:**
 	- Modify the get_from_erpnext() function in your Python script to use the correct API URL, headers, and authentication token:
 
-![image](https://github.com/ProdITdept/Kanban/assets/168414219/455d7594-5536-4504-a7c0-6cb769df6507)
-![image](https://github.com/ProdITdept/Kanban/assets/168414219/f1bb2545-5224-42a8-a643-22793dee7e5d)
+![329983054-455d7594-5536-4504-a7c0-6cb769df6507](https://github.com/ELITEJ0E/Kanban/assets/155508356/afb7da5c-2eea-497d-b8e7-a38b573e546d)
+![329982789-f1bb2545-5224-42a8-a643-22793dee7e5d](https://github.com/ELITEJ0E/Kanban/assets/155508356/6a35673e-0c99-4e1e-9cf7-dcbdf10a1c23)
 
 
 ## Installing Adobe Acrobat Reader:
@@ -98,7 +98,7 @@ By following these steps, you have successfully set up the FJ Kanban doctype in 
 **1. Visit the official Adobe Acrobat Reader download page at *https://get.adobe.com/reader/*.**
 
 **2. Modify the directory to your own desired directories**
-![image](https://github.com/ProdITdept/Kanban/assets/168414219/be275948-7688-4ec1-969d-96b3841499c4)
+![329987175-be275948-7688-4ec1-969d-96b3841499c4](https://github.com/ELITEJ0E/Kanban/assets/155508356/9d6cfd47-2814-4329-8c32-c245c4f53f15)
 
 
 ## How to Use:
@@ -121,7 +121,7 @@ By following these steps, you have successfully set up the FJ Kanban doctype in 
  
   ***If everything works up until this step, you should be seeing this:***
   
- ![image](https://github.com/ProdITdept/Kanban/assets/168414219/c0ec210a-e69f-4928-8dfe-e94405385bbd)
+![329984953-c0ec210a-e69f-4928-8dfe-e94405385bbd](https://github.com/ELITEJ0E/Kanban/assets/155508356/4486a5ec-011d-49d9-b3f6-c6f441c71a17)
 
 **6. Access the web form through your preferred web browser at http://localhost:5000.**
 
@@ -133,10 +133,10 @@ By following these steps, you have successfully set up the FJ Kanban doctype in 
 ## Node-RED flow
 - import the flow from **Kanban.json**
 
-![image](https://github.com/ProdITdept/Kanban/assets/168414219/b11d91b0-e7c3-4a15-bf5a-282a01db5fc9)
+![330334210-b11d91b0-e7c3-4a15-bf5a-282a01db5fc9](https://github.com/ELITEJ0E/Kanban/assets/155508356/f4549722-83c3-4250-af53-a9f2646e22d8)
 
 **- The flow should be able to change the status of the doctype**
-![image](https://github.com/ProdITdept/Kanban/assets/168414219/5b2530f9-d6b1-4569-829b-d4a4fbbe3368)
+![image](https://github.com/ELITEJ0E/Kanban/assets/155508356/f5b941f1-e901-4469-bb55-0821fc05ac2d)
 
 
 
