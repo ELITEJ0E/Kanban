@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> FJ Kanban</title>
+
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" href="https://www.finessemoulding.com/wp-content/uploads/2021/08/classicscenic-logo.svg" sizes="32x32">
+
+
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: 100% 100%;
+    background-position: center;
+    animation: changeBackground 20s infinite, slideAnimation 2s ;
+}
+
+@keyframes changeBackground {
+    0%, 20% { background-image: url('https://assets.theedgemarkets.com/Classic-Scenic-Bhd_ClassicScenicBhd_0.jpg'); } /* Initial background and transition to second image */
+    25%, 45% { background-image: url('https://sharesinfo4u.com/wp-content/uploads/2023/02/Sharesinfo4u_cscenic_20230219_1.jpg'); } /* Second image shown for 4 seconds and transition to third image */
+    50%, 70% { background-image: url('https://www.finessemoulding.com/wp-content/uploads/2022/08/Finesse-Moulding-Factory-Shots-0010-768x512.jpg'); } /* Third image shown for 4 seconds and transition to fourth image */
+    75%, 95% { background-image: url('https://images.simplywall.st/asset/industry/2061000-choice2-main-header/1585186876636'); } /* Fourth image shown for 4 seconds and transition to initial background */
+    100% { background-image: url('https://assets.theedgemarkets.com/Classic-Scenic-Bhd_ClassicScenicBhd_0.jpg'); } /* Fourth image shown for 4 seconds and transition to initial background */
+}
+
+@keyframes slideAnimation {
+  0% {
+    transform: translateX(-150px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+#date {
+        font-family: Helvetica;
+        font-size: 16px; 
+        color: #0a5a65; 
+        animation: fadeIn 2s ease-in-out; 
+        
+    }
+
+    /* Define keyframes for the fade-in animation */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+.input-col {
+    display: inline-block;
+    margin-right: px; /* Adjust margin as needed */
+    width: 90px;
+    
+}
+
+input[type="text"] {
+    width: 50px; /* Adjust width as needed */
+}
+
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    margin-bottom: 20px;
+    margin-right: 105px;
+}
+
+.date {
+    font-size: 14px;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 3vh 5vw;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"], select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+input[type="submit"] {
+    background-color: #0a5a65;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.submit{
+    padding-bottom: 10px;
+}
+
+@keyframes changeColor {
+    0% { background-color: #0a5a65; }
+    50% { background-color: #f9b61a; }
+    100% { background-color: #0a5a65; }
+}
+
+
+
+input[type="submit"]:hover {
+    transition: background-color 0.75s; /* Transition duration for breathing effect */
+    animation: changeColor 2s infinite; /* Infinite animation with a longer duration */
+}
+
+
+.mc-id {
+    display: flex;
+}
+
+.input-col {
+    flex: 1;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
+
+.input-col label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.input-col input,
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 20px;
+    transition: border-color 0.3s ease; /* Add transition to the border color */
+}
+
+.input-col input:hover, 
+.form-group input:hover {
+    border-color: #f9b61a; /* Change the border color to green on hover */
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .container {
+        max-width: 80%; /* Adjust the maximum width */
+        padding: 10px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    input[type="submit"] {
+        padding: 12px;
+    }
+}
+
+
+/* Loading overlay styles */
+#loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    display: none; /* Initially hidden */
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-spinner {
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+/* Success message styles */
+#successMessage {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation for loading spinner */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+</style>
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo-container">
+            <div class="logo">
+                <!--<img src="https://www.classicscenic.com/wp-content/uploads/email/logo2.png" alt="logo" width="100px" height="auto">-->
+                 <img src="https://www.finessemoulding.com/wp-content/uploads/2021/08/hrb-e.png" alt="logo" width="100px" height="auto"> 
+            </div>
+            <div>
+                <p id="date"></p>
+            </div>
+        </div>
+        <!-- "-->
+        <form id="kanbanForm" action="/generate_pdf" method="post" onsubmit="setDateAndReload()" >
+            <div class="form-group">
+                <label for="species">Species:</label>
+                <select id="species" name="species" required>
+                    <option value="AR">AR-ARA</option>
+                    <option value="BG">BG-BUNGAI</option>
+                    <option value="BP">BP-BRAZILIAN PINE</option>
+                    <option value="DD">DD-KEDONDONG</option>
+                    <option value="DU">DU-DURIAN</option>
+                    <option value="DW">DW-DAMAR MINYAK</option>
+                    <option value="EU">EU-EUCALYPTUS</option>
+                    <option value="GG">GG-GERONGGANG</option>
+                    <option value="GN">GN-URUGUAYAN PINE</option>
+                    <option value="HF">HF-HEMFIR</option>
+                    <option value="KB">KB-KEKABU</option>
+                    <option value="JW">JW-JELUTONG</option>
+                    <option value="KL">KL-KELAMPAYAN</option>
+                    <option value="KM">KM-KEMIRI</option>
+                    <option value="LP">LP-CHILEAN PINE</option>
+                    <option value="LR">LR-LARAN</option>
+                    <option value="MD">MD-MEDANG MAS</option>
+                    <option value="MH">MH-MAHANG</option>
+                    <option value="MK">MK-MEMPISANG KASAH</option>
+                    <option value="ML">ML-MELAWIS</option>
+                    <option value="MP">MP-MEMPISANG</option>
+                    <option value="MR">MR-MARUPA</option>
+                    <option value="MRT">MRT-MERANTI</option>
+                    <option value="MT">MT-MELANTAI</option>
+                    <option value="MW">MW-MERBULAN</option>
+                    <option value="NZP">NZP-NEW ZEALAND RADIATE PINE</option>
+                    <option value="PE">PE-PEROPOK</option>
+                    <option value="PH">PH-PENARAHAN</option>
+                    <option value="PL">PL-PULAI</option>
+                    <option value="PN">PN-PINE</option>
+                    <option value="PO">PO-PELONG</option>
+                    <option value="PP">PP-MERANTI PIPIT</option>
+                    <option value="PW">PW-WHITE PEROPOK</option>
+                    <option value="RU">RU-RUBBER WOOD</option>
+                    <option value="RW">RW-RAMIN</option>
+                    <option value="SD">SD-SESENDOK</option>
+                    <option value="SN">SN-SENDONG</option>
+                    <option value="SP">SP-SWAMPY DURIAN</option>
+                    <option value="SR">SR-SPRUCE</option>
+                    <option value="SW">SW-SURIAN WANGI</option>
+                    <option value="CU">CU-URUGUAYAN PINE (FSC 100%)</option>
+                    <option value="DA">DA-DURIAN DAUN</option>
+                    <option value="KSK">KSK-KSK</option>
+                    <option value="PB">PB-PENARAHAN BUKIT</option>
+                    <option value="LD">LD-KELEDANG</option>
+                    <option value="NY">NY-NYATOH</option>
+                    <option value="TY">TY-TUYONG</option>
+                    <option value="PA">PA-MERANTI PAANG</option>
+                    <option value="KK">KK-KSK</option>
+                    <option value="RM">RM-RAMIN-</option>
+                </select>
+                
+            </div>            
+            <div class="form-group">
+                <label for="size">Size:</label>
+                <input type="int" id="size" name="size" required onkeyup="formatSize()">
+            </div>
+            <div class="form-group">
+                <label for="volume">L x W x H:</label>
+                <input type="float" id="volume" name="volume" required onkeyup="formatVolume()">
+            </div>
+            <div class="form-group">
+                <label for="mc_id">MC ID:</label>
+                    <select id="mc_id" name="mc_id" required>
+                        <option value="ACS-1">ACS-1</option>
+                        <option value="ACS-2">ACS-2</option>
+                        <option value="ACS-3">ACS-3</option>
+                        <option value="CC-1">CC-1</option>
+                        <option value="CC-5">CC-5</option>
+                        <option value="CC-6">CC-6</option>
+                        <option value="CC-7">CC-7</option>
+                        <option value="DP-1">DP-1</option>
+                        <option value="DP-2">DP-2</option>
+                        <option value="DP-7">DP-7</option>
+                        <option value="DSP-01">DSP-01</option>
+                        <option value="MRS-01">MRS-01</option>
+                        <option value="MR-6">MR-6</option>
+                        <option value="MR-9">MR-9</option>
+                    </select>
+            </div>
+            <input type="hidden" id="mc_date" name="mc_date">
+            <div class="form-group">
+                <label for="trolley">Trolley#:</label>
+                <input type="text" id="trolley" name="trolley" required minlength="5">
+            </div>
+            
+            <div class="submit">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    
+    </div>
+
+    <script>
+        const form = document.getElementById('kanbanForm');
+
+        form.addEventListener('submit', function(event) {
+        event.preventDefault(); 
+
+        // Get form inputs
+        const species = document.getElementById('species').value;
+        const size = document.getElementById('size').value;
+        const volume = document.getElementById('volume').value;
+        const mc_id = document.getElementById('mc_id').value;
+        const trolley = document.getElementById('trolley').value;
+        const mc_date = document.getElementById('mc_date').value;
+        
+        // Prepare the preview data
+        const previewData = `
+               Species:      ${species}
+                    Size:      ${size}
+            L x W x H:      ${volume}
+                 MC ID:      ${mc_id}
+              Trolley#:      ${trolley}
+                   Date:      ${mc_date}
+        `;
+        
+        // Display a confirmation dialog
+        const isConfirmed = confirm(`Please confirm the following data:\n${previewData}\nDo you want to proceed?`);
+
+        // If confirmed, submit the form
+        if (isConfirmed) {
+            form.submit();
+        }
+        });
+
+        function setDateAndReload() {
+            // Get current date
+            var currentDate = new Date();
+            // Format date as required by input field (YYYY-MM-DD)
+            var formattedDate = currentDate.getFullYear() + '-' + ('0' + (currentDate.getMonth() + 1)).slice(-2) + '-' + ('0' + currentDate.getDate()).slice(-2);
+            // Set the value of the hidden input field to the formatted current date
+            document.getElementById('mc_date').value = formattedDate;
+            // Reload the page after a 1 second delay
+            setTimeout(function() {
+                window.location.reload();
+            }, 5000); // 1000 milliseconds = 1 second
+        }
+
+
+        function updateDateTime() {
+        var dateElement = document.getElementById('date');
+        function updateTime() {
+            var currentDate = new Date();
+            var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+            var formattedDate = currentDate.toLocaleDateString('en-US', options);
+            dateElement.textContent = formattedDate;
+        }
+        
+        updateTime();
+
+        setInterval(updateTime, 1000);
+    }
+
+    window.onload = function() {
+        updateDateTime();
+        
+    };
+
+    
+
+    function formatSize() {
+    let sizeInput = document.getElementById('size');
+    let sizeValue = sizeInput.value;
+
+    sizeValue = sizeValue.replace(/x/g, ' x ');
+    sizeValue = sizeValue.replace(/\s*x\s*/g, ' x ');
+    sizeValue = sizeValue.replace(/[^\d.x\s]/g, '');
+    let parts = sizeValue.split(' x ');
+    if (parts.length > 2) {
+        sizeValue = parts[0] + ' x ' + parts.slice(1).join('');
+    }
+
+    sizeInput.value = sizeValue;
+}
+
+
+    function formatVolume() {
+    let volumeInput = document.getElementById('volume');
+    let volumeValue = volumeInput.value.replace(/[^\d.]/g, ''); // Remove non-digit and non-decimal characters
+    let formattedValue = volumeValue.replace(/(\d)(\d{1,2})(\.\d{0,})?/, '$1` x $2 x $3'); // Add 'x' between digits and preserve decimals
+    volumeInput.value = formattedValue;
+    }
+
+    </script>
+
+    
+
+</body>
+</html>
